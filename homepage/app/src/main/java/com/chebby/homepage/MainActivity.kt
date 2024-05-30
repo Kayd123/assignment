@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
@@ -43,6 +44,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardDefaults.cardColors
+import androidx.compose.material3.CardDefaults.shape
 import androidx.compose.material3.CardElevation
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -76,7 +78,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chebby.homepage.ui.theme.HomepageTheme
-
 
 
 class MainActivity : ComponentActivity() {
@@ -114,6 +115,8 @@ fun home(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Card(
+
+
                             shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp),
                             modifier = Modifier
                                 .padding(1.dp)
@@ -272,47 +275,41 @@ fun home(
                             .padding(8.dp)
                     )
                     LazyRow {
-
                         item {
-
                             Card(
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .fillMaxHeight()
-                                    .fillMaxWidth(),
-
-                                shape = RoundedCornerShape(10.dp),
+                                    .fillParentMaxSize()
+                                    .padding(16.dp),
+                                shape = RoundedCornerShape(10.dp)
                             ) {
-
                                 Box(
                                     modifier = Modifier
+                                        .fillMaxSize()
                                 ) {
-
                                     Image(
                                         painter = painterResource(id = backgroundImageResId),
-                                        contentDescription = "",
+                                        contentDescription = null,
                                         contentScale = ContentScale.Crop,
                                         modifier = Modifier
                                             .fillMaxSize()
-                                            .fillMaxWidth()
-                                            .fillMaxHeight(),
                                     )
                                     Box(
                                         modifier = Modifier
                                             .fillMaxSize()
                                             .background(Color.Black.copy(alpha = 0.3f))
-                                            .padding(16.dp),
-                                    ) {
 
-                                        Column {
+                                    ) {
+                                        Column(
+                                            verticalArrangement = Arrangement.Center,
+                                            horizontalAlignment = Alignment.CenterHorizontally,
+                                            modifier = Modifier.fillMaxSize()
+                                        ) {
                                             Button(
                                                 onClick = { },
                                                 modifier = Modifier
-                                                    .padding(10.dp),
+                                                    .padding(bottom = 16.dp),
                                                 shape = RoundedCornerShape(8.dp),
                                                 colors = ButtonDefaults.buttonColors(Color.White)
-                                                //shape = RectangleShape,
-
                                             ) {
                                                 Text(
                                                     "Limited time!",
@@ -324,103 +321,323 @@ fun home(
                                                 color = Color.White,
                                                 fontFamily = FontFamily.SansSerif,
                                                 fontSize = 16.sp,
-                                                textAlign = TextAlign.Center,
+                                                textAlign = TextAlign.Center
                                             )
-                                            Spacer(
-                                                modifier = Modifier
-                                                    .padding(8.dp)
-                                            )
-                                            Row {
-                                                Row {
+                                            Spacer(modifier = Modifier.height(16.dp))
+                                            Row(
+                                                verticalAlignment = Alignment.Bottom
+                                            ) {
+                                                Text(
+                                                    text = "Up to",
+                                                    color = Color.White,
+                                                    fontFamily = FontFamily.SansSerif,
+                                                    fontSize = 16.sp,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text(
+                                                    text = "40",
+                                                    color = Color.White,
+                                                    fontFamily = FontFamily.Monospace,
+                                                    fontSize = 40.sp,
+                                                    fontWeight = FontWeight.Bold,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Box(
+                                                    modifier = Modifier
+                                                        .size(15.dp)
+                                                        .background(
+                                                            Color.Red,
+                                                            shape = CircleShape
+                                                        ),
+//                                                        .offset(x = (-2).dp, y = (2).dp),
+                                                    contentAlignment = Alignment.Center
+                                                ) {
                                                     Text(
-                                                        text = "Up to",
+                                                        text = "%",
                                                         color = Color.White,
                                                         fontFamily = FontFamily.SansSerif,
-                                                        fontSize = 16.sp,
-                                                        textAlign = TextAlign.Center,
-                                                        )
-                                                    Box(
-                                                        contentAlignment = Alignment.BottomEnd,
-                                                    ) {
-                                                        Text(
-                                                            text = "40",
-                                                            color = Color.White,
-                                                            fontFamily = FontFamily.Monospace,
-                                                            fontSize = 40.sp,
-                                                            fontWeight = FontWeight.Bold,
-                                                            textAlign = TextAlign.Center,
-                                                            modifier = Modifier.align(Alignment.BottomStart)
-                                                        )
-                                                        Box(
-                                                            modifier = Modifier
-                                                                .size(15.dp)
-                                                                .background(
-                                                                    Color.Red,
-                                                                    shape = CircleShape
-                                                                )
-                                                                .align(Alignment.BottomEnd)
-                                                                .offset(x = (-2).dp, y = (2).dp)
-                                                            ,
-                                                            contentAlignment = Alignment.Center
-                                                        ) {
-                                                            Text(
-                                                                text = "%",
-                                                                color = Color.White,
-                                                                fontFamily = FontFamily.SansSerif,
-                                                                fontSize = 13.sp,
-                                                                textAlign = TextAlign.Center
-                                                            )
-                                                        }
-                                                     }
+                                                        fontSize = 15.sp,
+                                                        textAlign = TextAlign.Center
+                                                    )
                                                 }
                                             }
                                             Spacer(modifier = Modifier
-                                                .padding(8.dp)
-                                            )
-                                            Column (
-                                                verticalArrangement = Arrangement.SpaceBetween,
-                                                horizontalAlignment = Alignment.CenterHorizontally,
-                                                modifier = Modifier
-                                                    .fillMaxWidth()
-                                            ){
-                                                Row{
+                                                .padding(8.dp))
+                                            Column {
+                                                Row {
                                                     Text(
-                                                        text = "All Services Available |T&C Applied",
+                                                        text = "All Service Available | T&C Applied",
                                                         color = Color.White,
                                                         fontFamily = FontFamily.Monospace,
-                                                        fontSize = 13.sp,
+                                                        fontSize = 15.sp,
                                                         textAlign = TextAlign.Center
                                                     )
-                                                    Spacer(modifier = Modifier
-                                                        .padding(8.dp)
-                                                    )
-                                                    Button(onClick = { /*TODO*/ },
+                                                    Button(
+                                                        onClick = { /*TODO*/ },
                                                         colors = ButtonDefaults.buttonColors(
                                                             containerColor = Color.Red,
                                                             contentColor = Color.White
                                                         ),
                                                         modifier = Modifier
-                                                            .padding(2.dp) ) {
-                                                        Text(
-                                                            text = "Claim",
-                                                            fontFamily = FontFamily.SansSerif,
-                                                            fontSize = 16.sp
-                                                        )
+                                                            .padding(16.dp)
+                                                    ) {
                                                     }
+                                                    Text(
+                                                        text = "Claim",
+                                                        fontFamily = FontFamily.SansSerif,
+                                                        fontSize = 16.sp
+                                                    )
                                                 }
                                             }
                                         }
-                                    }
 
+                                    }
+                                    }
                                 }
+                            Card(
+                                modifier = Modifier
+                                    .fillParentMaxSize()
+                                    .padding(16.dp),
+                                shape = RoundedCornerShape(10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = backgroundImageResId),
+                                        contentDescription = null,
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .background(Color.Black.copy(alpha = 0.3f))
+
+                                    ) {
+                                        Column(
+                                            verticalArrangement = Arrangement.Center,
+                                            horizontalAlignment = Alignment.CenterHorizontally,
+                                            modifier = Modifier.fillMaxSize()
+                                        ) {
+                                            Button(
+                                                onClick = { },
+                                                modifier = Modifier
+                                                    .padding(bottom = 16.dp),
+                                                shape = RoundedCornerShape(8.dp),
+                                                colors = ButtonDefaults.buttonColors(Color.White)
+                                            ) {
+                                                Text(
+                                                    "Limited time!",
+                                                    color = Color(0xff000000)
+                                                )
+                                            }
+                                            Text(
+                                                text = "Get Special Offer",
+                                                color = Color.White,
+                                                fontFamily = FontFamily.SansSerif,
+                                                fontSize = 16.sp,
+                                                textAlign = TextAlign.Center
+                                            )
+                                            Spacer(modifier = Modifier.height(16.dp))
+                                            Row(
+                                                verticalAlignment = Alignment.Bottom
+                                            ) {
+                                                Text(
+                                                    text = "Up to",
+                                                    color = Color.White,
+                                                    fontFamily = FontFamily.SansSerif,
+                                                    fontSize = 16.sp,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text(
+                                                    text = "40",
+                                                    color = Color.White,
+                                                    fontFamily = FontFamily.Monospace,
+                                                    fontSize = 40.sp,
+                                                    fontWeight = FontWeight.Bold,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Box(
+                                                    modifier = Modifier
+                                                        .size(15.dp)
+                                                        .background(
+                                                            Color.Red,
+                                                            shape = CircleShape
+                                                        ),
+//                                                        .offset(x = (-2).dp, y = (2).dp),
+                                                    contentAlignment = Alignment.Center
+                                                ) {
+                                                    Text(
+                                                        text = "%",
+                                                        color = Color.White,
+                                                        fontFamily = FontFamily.SansSerif,
+                                                        fontSize = 15.sp,
+                                                        textAlign = TextAlign.Center
+                                                    )
+                                                }
+                                            }
+                                            Spacer(modifier = Modifier
+                                                .padding(8.dp))
+                                            Column {
+                                                Row {
+                                                    Text(
+                                                        text = "All Service Available | T&C Applied",
+                                                        color = Color.White,
+                                                        fontFamily = FontFamily.Monospace,
+                                                        fontSize = 15.sp,
+                                                        textAlign = TextAlign.Center
+                                                    )
+                                                    Button(
+                                                        onClick = { /*TODO*/ },
+                                                        colors = ButtonDefaults.buttonColors(
+                                                            containerColor = Color.Red,
+                                                            contentColor = Color.White
+                                                        ),
+                                                        modifier = Modifier
+                                                            .padding(16.dp)
+                                                    ) {
+                                                    }
+                                                    Text(
+                                                        text = "Claim",
+                                                        fontFamily = FontFamily.SansSerif,
+                                                        fontSize = 16.sp
+                                                    )
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                            Card(
+                                modifier = Modifier
+                                    .fillParentMaxSize()
+                                    .padding(16.dp),
+                                shape = RoundedCornerShape(10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = backgroundImageResId),
+                                        contentDescription = null,
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .background(Color.Black.copy(alpha = 0.3f))
+
+                                    ) {
+                                        Column(
+                                            verticalArrangement = Arrangement.Center,
+                                            horizontalAlignment = Alignment.CenterHorizontally,
+                                            modifier = Modifier.fillMaxSize()
+                                        ) {
+                                            Button(
+                                                onClick = { },
+                                                modifier = Modifier
+                                                    .padding(bottom = 16.dp),
+                                                shape = RoundedCornerShape(8.dp),
+                                                colors = ButtonDefaults.buttonColors(Color.White)
+                                            ) {
+                                                Text(
+                                                    "Limited time!",
+                                                    color = Color(0xff000000)
+                                                )
+                                            }
+                                            Text(
+                                                text = "Get Special Offer",
+                                                color = Color.White,
+                                                fontFamily = FontFamily.SansSerif,
+                                                fontSize = 16.sp,
+                                                textAlign = TextAlign.Center
+                                            )
+                                            Spacer(modifier = Modifier.height(16.dp))
+                                            Row(
+                                                verticalAlignment = Alignment.Bottom
+                                            ) {
+                                                Text(
+                                                    text = "Up to",
+                                                    color = Color.White,
+                                                    fontFamily = FontFamily.SansSerif,
+                                                    fontSize = 16.sp,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text(
+                                                    text = "40",
+                                                    color = Color.White,
+                                                    fontFamily = FontFamily.Monospace,
+                                                    fontSize = 40.sp,
+                                                    fontWeight = FontWeight.Bold,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Box(
+                                                    modifier = Modifier
+                                                        .size(15.dp)
+                                                        .background(
+                                                            Color.Red,
+                                                            shape = CircleShape
+                                                        ),
+//                                                        .offset(x = (-2).dp, y = (2).dp),
+                                                    contentAlignment = Alignment.Center
+                                                ) {
+                                                    Text(
+                                                        text = "%",
+                                                        color = Color.White,
+                                                        fontFamily = FontFamily.SansSerif,
+                                                        fontSize = 15.sp,
+                                                        textAlign = TextAlign.Center
+                                                    )
+                                                }
+                                            }
+                                            Spacer(modifier = Modifier
+                                                .padding(8.dp))
+                                            Column {
+                                                Row {
+                                                    Text(
+                                                        text = "All Service Available | T&C Applied",
+                                                        color = Color.White,
+                                                        fontFamily = FontFamily.Monospace,
+                                                        fontSize = 15.sp,
+                                                        textAlign = TextAlign.Center
+                                                    )
+                                                    Button(
+                                                        onClick = { /*TODO*/ },
+                                                        colors = ButtonDefaults.buttonColors(
+                                                            containerColor = Color.Red,
+                                                            contentColor = Color.White
+                                                        ),
+                                                        modifier = Modifier
+                                                            .padding(16.dp)
+                                                    ) {
+                                                    }
+                                                    Text(
+                                                        text = "Claim",
+                                                        fontFamily = FontFamily.SansSerif,
+                                                        fontSize = 16.sp
+                                                    )
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
                             }
                         }
                     }
 
-
                 }
-
-            }
         },
         bottomBar ={ BottomBar()}
     )
