@@ -49,12 +49,11 @@ android {
     }
 }
 
+
 dependencies {
-//    implementation(androidx.core)
-//    implementation(com.google.android.material)
-//    implementation(androidx.appcompat)
-//    implementation(androidx.constraintlayout)
-//    implementation(androidx.legacy)
+
+    implementation("androidx.compose.material:material:1.6.7") //bottom navigator
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
