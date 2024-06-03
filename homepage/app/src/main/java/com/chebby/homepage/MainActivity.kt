@@ -56,6 +56,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -88,7 +89,9 @@ fun home(
     }
     Scaffold(
         content = {
-            LazyColumn {
+            LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                    ){
                 item {
                     Column(
                         modifier = Modifier
@@ -101,6 +104,7 @@ fun home(
                         Card(
                             shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp),
                             modifier = Modifier
+                                .fillMaxHeight()
                                 .padding(1.dp)
                                 .fillMaxWidth()
                                 .fillMaxSize(),
@@ -612,7 +616,7 @@ fun home(
                                             }
                                             Spacer(
                                                 modifier = Modifier
-                                                    .padding(8.dp)
+                                                    .padding(4.dp)
                                             )
                                             Column {
                                                 Row(
@@ -687,23 +691,264 @@ fun home(
                     }
                     LazyRow {
                         item {
-                           Column(modifier = Modifier
-                               .padding(16.dp)
-                           ){
-                               Icon(
-                                   painter = painterResource(R.drawable.shirt),
-                                   contentDescription = null,
-                                   modifier = Modifier
-                                       .padding(bottom = 8.dp)
-                               )
-                               Text(
-                                   text = "Clothes",
-                                   fontSize = 16.sp
-                               )
-                           }
+                            Row (
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .fillMaxWidth()
 
+                            ) {
+                                Column(modifier = Modifier
+                                    .padding(16.dp)
+
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .background(
+                                                Color.White.copy(alpha = 0.9f),
+                                                shape = CircleShape
+                                            )
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(R.drawable.shirt),
+                                            contentDescription = null,
+                                            modifier = Modifier
+                                                .padding(bottom = 8.dp)
+
+                                        )
+
+                                    }
+                                    Text(
+                                        text = "Clothes",
+                                        fontSize = 16.sp
+                                    )
+
+
+                                }
+                                Column(modifier = Modifier
+                                    .padding(16.dp)
+                                ){
+                                    Icon(
+                                        painter = painterResource(R.drawable.electrics),
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                            .padding(bottom = 8.dp)
+                                    )
+                                    Text(
+                                        text = "Electronics",
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Column(modifier = Modifier
+                                    .padding(16.dp)
+                                ){
+                                    Icon(
+                                        painter = painterResource(R.drawable.shoes),
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                            .padding(bottom = 8.dp)
+                                    )
+                                    Text(
+                                        text = "Shoes",
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Column(modifier = Modifier
+                                    .padding(16.dp)
+                                ){
+                                    Icon(
+                                        painter = painterResource(R.drawable.watch),
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                            .padding(bottom = 8.dp)
+                                    )
+                                    Text(
+                                        text = "Watch",
+                                        fontSize = 16.sp
+                                    )
+                                }
+                            }
                         }
                     }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Text(
+                            "Flash Sale",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .padding(10.dp)
+                        )
+                        Text(
+                            "Closing In:",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .padding(10.dp)
+                        )
+                        Text(
+                            "02",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Red
+                        )
+                        Text(
+                            ":",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Text(
+                            "20",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Red
+                        )
+                        Text(
+                            ":",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 12.sp,
+
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Text(
+                            "56",
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Red
+                        )
+                    }
+                    LazyRow {
+                        item {
+                            Row {
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = Color.Black,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "All",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.Red,
+                                        contentColor = Color.White,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "Newest",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = Color.Black,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "Popular",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = Color.Black,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "Clothes",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = Color.Black,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "Electronics",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = Color.Black,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "Shoes",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = Color.Black,
+                                    ),
+                                ) {
+                                    Text(
+                                        text = "Watch",
+                                        fontFamily = FontFamily.SansSerif,
+                                        fontSize = 16.sp
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    LazyRow {
+                        item {
+                            Card(
+                                modifier = Modifier
+                                    .fillParentMaxSize()
+                                    .padding(16.dp),
+                                shape = RoundedCornerShape(10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                ) {
+                                    Image(
+                                        painter = painterResource(R.drawable.index10),
+                                        contentDescription = null,
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    )
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
                   },

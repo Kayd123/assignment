@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "637086460494",
+    "project_id": "homepage-e3e5a",
+    "storage_bucket": "homepage-e3e5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637086460494:android:eb9f753197f44048f1f11f",
+        "android_client_info": {
+          "package_name": "com.chebby.homepage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkF8JgTpjFG_GdBaiYuQ5u6YmMFeB-dKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
